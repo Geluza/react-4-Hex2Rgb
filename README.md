@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/ykiitkqli0awbbv1?svg=true)](https://ci.appveyor.com/project/Geluza/react-4-hex2rgb)
