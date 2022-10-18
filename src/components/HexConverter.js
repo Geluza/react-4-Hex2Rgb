@@ -7,26 +7,32 @@ function HexConverter() {
 
   const changeColor = (evt) => {
     setHex(evt.target.value);
-    if(hex.length === 7) hex2rgb(hex);
+    if(evt.target.value.length === 7) {
+      hex2rgb(evt.target.value);
+    } 
   }
 
   const styleColor = {
-    background: hex,
+    background: rgb,
   }
 
-  const hex2rgb = (hex) => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+const errorColor = {
+ background: "red",
+}
+
+  const hex2rgb = (a) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);
     if (result) {
       setRgb(rgb = `rgb(${parseInt(result[1],16)}, ${parseInt(result[2],16)}, ${parseInt(result[3],16)} )`)
-   } else {
-    setRgb(rgb = "Ошибка")
+   } else  {
+    setRgb(rgb = "Ошибка");
   }
 }
   return (
-    <main className="App" style={styleColor}>
+    <main className="App" style={rgb==="Ошибка"? errorColor : styleColor}>
     <div className="Converter">
-    <input className="hex" type="text" value={hex} onChange={changeColor}/>
-    <div className="rgb">{rgb}</div>
+    <input className="hex" placeholder="Введите HEX" type="text" value={hex} onChange={changeColor}/>
+    <div className="rgb" >{rgb}</div>
     </div>
     </main>
   );
